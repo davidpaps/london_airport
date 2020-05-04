@@ -27,4 +27,16 @@ describe("Airport", function () {
       expect(airport.takeOff()).toBe("Plane Successfully Taken Off!");
     });
   });
+
+  describe("hanger capacity", function () {
+    it("error raised when capacity is full", function () {
+      for (let land = 0; land < 20; land++) {
+        airport.land("plane");
+      }
+      console.log(airport.hanger);
+      expect(airport.land("plane21")).toEqual(
+        "Hanger Full, Plane Can Not Land!"
+      );
+    });
+  });
 });
