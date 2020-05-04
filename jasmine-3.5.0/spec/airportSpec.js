@@ -33,10 +33,18 @@ describe("Airport", function () {
       for (let land = 0; land < 20; land++) {
         airport.land("plane");
       }
-      console.log(airport.hanger);
       expect(airport.land("plane21")).toEqual(
         "Hanger Full, Plane Can Not Land!"
       );
+    });
+
+    it("can have default capacity of 20", function () {
+      expect(airport.capacity).toEqual(20);
+    });
+
+    it("can have a different capacity if specified", function () {
+      let largeAirport = new Airport(30);
+      expect(largeAirport.capacity).toEqual(30);
     });
   });
 });
