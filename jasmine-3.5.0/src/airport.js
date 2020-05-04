@@ -15,7 +15,11 @@ class Airport {
   };
 
   takeOff = () => {
-    this.hanger.pop();
-    return "Plane Successfully Taken Off!";
+    if (this.hanger.length > 0) {
+      this.hanger.pop();
+      return "Plane Successfully Taken Off!";
+    } else {
+      return "No Plane Avaliable!";
+    }
   };
 }

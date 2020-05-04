@@ -26,6 +26,10 @@ describe("Airport", function () {
       airport.land("plane");
       expect(airport.takeOff()).toBe("Plane Successfully Taken Off!");
     });
+
+    it("needs a plane in the hanger to take off", function () {
+      expect(airport.takeOff()).toEqual("No Plane Avaliable!");
+    });
   });
 
   describe("hanger capacity", function () {
