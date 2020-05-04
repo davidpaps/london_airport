@@ -29,6 +29,6 @@ class Airport {
   };
 
   isStormy = () => {
-    this.weather.generateWeather();
+    return this.weather.generateWeather();
   };
 }
