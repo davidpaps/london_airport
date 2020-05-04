@@ -9,7 +9,16 @@ describe("Airport", function () {
 
   describe("land plane", function () {
     it("allows a plane to land", function () {
-      airport.landPlane("plane");
+      airport.land("plane");
+      expect(airport.hanger.length).toEqual(1);
+    });
+  });
+
+  describe("take off plane", function () {
+    it("allows a plane to take off", function () {
+      airport.land("plane");
+      airport.land("plane2");
+      airport.takeOff();
       expect(airport.hanger.length).toEqual(1);
     });
   });

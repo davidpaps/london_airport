@@ -5,7 +5,11 @@ class Airport {
     this.hanger = [];
   }
 
-  landPlane = () => {
+  land = () => {
     this.hanger.push("plane");
+  };
+
+  takeOff = () => {
+    this.hanger.pop();
   };
 }
