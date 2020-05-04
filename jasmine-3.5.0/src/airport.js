@@ -11,5 +11,6 @@ class Airport {
 
   takeOff = () => {
     this.hanger.pop();
+    return "Plane Successfully Taken Off!";
   };
 }
