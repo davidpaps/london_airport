@@ -29,6 +29,10 @@ describe("Airport", function () {
   });
 
   describe("hanger capacity", function () {
+    it("can have default capacity of 20", function () {
+      expect(airport.capacity).toEqual(20);
+    });
+
     it("error raised when capacity is full", function () {
       for (let land = 0; land < 20; land++) {
         airport.land("plane");
@@ -38,13 +42,19 @@ describe("Airport", function () {
       );
     });
 
-    it("can have default capacity of 20", function () {
-      expect(airport.capacity).toEqual(20);
-    });
-
     it("can have a different capacity if specified", function () {
       let largeAirport = new Airport(30);
       expect(largeAirport.capacity).toEqual(30);
+    });
+
+    it("error raised when capacity is full for largeAirport", function () {
+      let largeAirport = new Airport(30);
+      for (let land = 0; land < 30; land++) {
+        largeAirport.land("plane");
+      }
+      expect(largeAirport.land("plane31")).toEqual(
+        "Hanger Full, Plane Can Not Land!"
+      );
     });
   });
 });
