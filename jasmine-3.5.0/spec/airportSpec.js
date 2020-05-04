@@ -70,11 +70,19 @@ describe("Airport", function () {
 
   describe("stormy weather", function () {
     it("raises an error when the weather is stormy and plane tries to take off", function () {
+      spyOn(Math, "random").and.returnValue(1);
       airport.land("plane");
       spyOn(airport, "isStormy").and.returnValue(true);
       expect(function () {
         airport.takeOff();
       }).toThrowError("Stormy Weather, Can Not Take Off!");
+    });
+
+    it("raises an error when the weather is stormy and a plane tries to land", function () {
+      spyOn(airport, "isStormy").and.returnValue(true);
+      expect(function () {
+        airport.land("plane");
+      }).toThrowError("Stormy Weather, Can Not Land!");
     });
   });
 });

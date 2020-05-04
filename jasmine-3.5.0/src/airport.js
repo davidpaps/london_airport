@@ -8,10 +8,14 @@ class Airport {
   }
 
   land = () => {
-    if (this.hanger.length < this.capacity) {
-      this.hanger.push("plane");
+    if (this.isStormy()) {
+      throw new Error("Stormy Weather, Can Not Land!");
     } else {
-      return "Hanger Full, Plane Can Not Land!";
+      if (this.hanger.length < this.capacity) {
+        this.hanger.push("plane");
+      } else {
+        return "Hanger Full, Plane Can Not Land!";
+      }
     }
   };
 
