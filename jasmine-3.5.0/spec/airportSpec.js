@@ -61,4 +61,12 @@ describe("Airport", function () {
       );
     });
   });
+
+  describe("stormy weather", function () {
+    it("raises an error when the weather is stormy and plane tries to take off", function () {
+      airport.land("plane");
+      spyOn(airport, "isStormy").and.returnValue(true);
+      expect(airport.takeOff).toThrowError("Stormy Weather, Can Not Take Off!");
+    });
+  });
 });

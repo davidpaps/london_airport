@@ -4,6 +4,7 @@ class Airport {
   constructor(capacity = 20) {
     this.hanger = [];
     this.capacity = capacity;
+    this.weather = new Weather();
   }
 
   land = () => {
@@ -15,11 +16,19 @@ class Airport {
   };
 
   takeOff = () => {
-    if (this.hanger.length > 0) {
-      this.hanger.pop();
-      return "Plane Successfully Taken Off!";
+    if (this.isStormy()) {
+      throw new Error("Stormy Weather, Can Not Take Off!");
     } else {
-      return "No Plane Avaliable!";
+      if (this.hanger.length > 0) {
+        this.hanger.pop();
+        return "Plane Successfully Taken Off!";
+      } else {
+        return "No Plane Avaliable!";
+      }
     }
+  };
+
+  isStormy = () => {
+    this.weather.generateWeather();
   };
 }
