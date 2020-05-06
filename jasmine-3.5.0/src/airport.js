@@ -8,11 +8,11 @@ class Airport {
   }
 
   land = (plane) => {
-    if (this.isStormy()) {
+    if (this._isStormy()) {
       throw new Error("Stormy Weather, Can Not Land!");
     } else {
-      if (this.hanger.length < this.capacity) {
-        this.hanger.push(plane);
+      if (this._spaceAvaliable()) {
+        this._releaseFromHanger(plane);
       } else {
         return "Hanger Full, Plane Can Not Land!";
       }
@@ -20,11 +20,11 @@ class Airport {
   };
 
   takeOff = () => {
-    if (this.isStormy()) {
+    if (this._isStormy()) {
       throw new Error("Stormy Weather, Can Not Take Off!");
     } else {
-      if (this.hanger.length > 0) {
-        this.hanger.pop();
+      if (this._planeAvaliable()) {
+        this._dockInHanger();
         return "Plane Successfully Taken Off!";
       } else {
         return "No Plane Avaliable!";
@@ -32,7 +32,23 @@ class Airport {
     }
   };
 
-  isStormy = () => {
+  _isStormy = () => {
     return this.weather.generateWeather();
+  };
+
+  _planeAvaliable = () => {
+    return this.hanger.length > 0;
+  };
+
+  _spaceAvaliable = () => {
+    return this.hanger.length < this.capacity;
+  };
+
+  _dockInHanger = () => {
+    this.hanger.pop();
+  };
+
+  _releaseFromHanger = (plane) => {
+    this.hanger.push(plane);
   };
 }

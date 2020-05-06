@@ -13,7 +13,7 @@ describe("Airport", function () {
 
   describe("land plane", function () {
     it("allows a plane to land", function () {
-      spyOn(airport, "isStormy").and.returnValue(false);
+      spyOn(airport, "_isStormy").and.returnValue(false);
       airport.land(plane);
       expect(airport.hanger.length).toEqual(1);
     });
@@ -21,7 +21,7 @@ describe("Airport", function () {
 
   describe("take off plane", function () {
     it("allows a plane to take off", function () {
-      spyOn(airport, "isStormy").and.returnValue(false);
+      spyOn(airport, "_isStormy").and.returnValue(false);
       airport.land(plane);
       airport.land(planeTwo);
       airport.takeOff();
@@ -29,13 +29,13 @@ describe("Airport", function () {
     });
 
     it("confirms a plane has taken off", function () {
-      spyOn(airport, "isStormy").and.returnValue(false);
+      spyOn(airport, "_isStormy").and.returnValue(false);
       airport.land(plane);
       expect(airport.takeOff()).toBe("Plane Successfully Taken Off!");
     });
 
     it("needs a plane in the hanger to take off", function () {
-      spyOn(airport, "isStormy").and.returnValue(false);
+      spyOn(airport, "_isStormy").and.returnValue(false);
       expect(airport.takeOff()).toEqual("No Plane Avaliable!");
     });
   });
@@ -46,7 +46,7 @@ describe("Airport", function () {
     });
 
     it("error raised when capacity is full", function () {
-      spyOn(airport, "isStormy").and.returnValue(false);
+      spyOn(airport, "_isStormy").and.returnValue(false);
       for (let land = 0; land < 20; land++) {
         airport.land(plane);
       }
@@ -62,7 +62,7 @@ describe("Airport", function () {
 
     it("error raised when capacity is full for largeAirport", function () {
       let largeAirport = new Airport(30);
-      spyOn(largeAirport, "isStormy").and.returnValue(false);
+      spyOn(largeAirport, "_isStormy").and.returnValue(false);
       for (let land = 0; land < 30; land++) {
         largeAirport.land(plane);
       }
@@ -76,14 +76,14 @@ describe("Airport", function () {
     it("raises an error when the weather is stormy and plane tries to take off", function () {
       spyOn(Math, "random").and.returnValue(1);
       airport.land(plane);
-      spyOn(airport, "isStormy").and.returnValue(true);
+      spyOn(airport, "_isStormy").and.returnValue(true);
       expect(function () {
         airport.takeOff();
       }).toThrowError("Stormy Weather, Can Not Take Off!");
     });
 
     it("raises an error when the weather is stormy and a plane tries to land", function () {
-      spyOn(airport, "isStormy").and.returnValue(true);
+      spyOn(airport, "_isStormy").and.returnValue(true);
       expect(function () {
         airport.land(plane);
       }).toThrowError("Stormy Weather, Can Not Land!");
