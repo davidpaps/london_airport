@@ -43,7 +43,7 @@ class Airport {
   };
 
   _deFuel = (plane) => {
-    return plane.defuel;
+    return plane._defuel;
   };
 
   _planeAvaliable = () => {
