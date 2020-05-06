@@ -1,6 +1,6 @@
 # London Airport
 
-A simple Object Orientated app, simulating an airport - functions via the console on a web browser. Test driven in JavaScript ES6 with the Jasmine library, this showcases good coding prncipals: Encapsulation, DRY, SRP, TDD. Built on the a set of user stories. The 'spyOn' feature of Jasmine was also used to seperate the concerns of the spec files.
+A simple Object Orientated app, simulating an airport - functions via the console on a web browser. Test driven in JavaScript ES6 with the Jasmine library, this showcases good coding prncipals: Encapsulation, DRY, SRP, TDD. Built on the a set of user stories. The 'spyOn' feature of Jasmine was also used to seperate the concerns of the spec files, spyOnObj was used for test doubles, to unit test in isolation, and a grouped feature test was conducted with the real objects to thoroughly test the entire program.
 
 ---
 
@@ -48,12 +48,24 @@ let airport = new Airport()
 
 ```
 
-This will instantiate the object needed for the app. You can then type in the following to action the objects accordingly:
+This will instantiate the objects needed for the program. You can then type in the following to action the objects accordingly:
 
 ```
 airport.land(plane)
+plane.refuel()
+airport.takeOff()
 ```
+
+If the weather is stormy during landing or take off, an error will be thrown. If there is not a plane avaliable in the hangar, an error will be thrown. If a plane has not been fueled before take off, an error will be thrown. Messages will be shown when a sucessful landing or take off has happened.
+
+## Testing
+
+To run the test suite (Jasmine), follow the instructions above to open the SpecRunner. The Jasmine test suite will appear with 20 passing tests and 100% coverage.
 
 ---
 
-To run the test suite (Jasmine), follow the instructions above to open the SpecRunner. The Jasmine test suite will appear with \_ passing tests.
+### Jasmine Test Suite and Console Example
+
+<img src='./jasmine-3.5.0/lib/test_and_console.png' />
+
+---
