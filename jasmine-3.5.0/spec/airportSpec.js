@@ -7,7 +7,7 @@ describe("Airport", function () {
 
   beforeEach(function () {
     airport = new Airport();
-    plane = jasmine.createSpyObj("plane", ["fuel", "refuel"]);
+    plane = jasmine.createSpyObj("plane", ["fuel"]);
     planeTwo = jasmine.createSpy("planeTwo");
   });
 
@@ -59,8 +59,6 @@ describe("Airport", function () {
       it("needs a plane to be fueled before take off", function () {
         spyOn(airport, "_isStormy").and.returnValue(false);
         airport.land(planeTwo);
-        // spyOn(planeTwo, "fuel").and.returnValue(false);
-        // expect(airport.takeOff).toEqual("Please Refuel Before Take Off!");
         expect(function () {
           airport.takeOff();
         }).toThrowError("Please Refuel Before Take Off!");
