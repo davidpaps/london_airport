@@ -9,7 +9,7 @@ A simple Object Orientated app, simulating an airport - functions via the consol
 ```
 As an air traffic controller
 So I can get passengers to a destination
-I want to instruct a plane to land at an airport
+I want to instruct a plane to land at an airport and confirm its arrival
 
 As an air traffic controller
 So I can get passengers on the way to their destination
@@ -17,7 +17,7 @@ I want to instruct a plane to take off from an airport and confirm that it is no
 
 As an air traffic controller
 To ensure safety
-I want to prevent landing when the airport is full
+I want to prevent landing when the airport is full with a confirmation message
 
 As the system designer
 So that the software can be used for many different airports
@@ -25,11 +25,15 @@ I would like a default airport capacity that can be overridden as appropriate
 
 As an air traffic controller
 To ensure safety
-I want to prevent takeoff when weather is stormy
+I want to prevent takeoff when weather is stormy with a confirmation message
 
 As an air traffic controller
 To ensure safety
-I want to prevent landing when weather is stormy
+I want to prevent landing when weather is stormy with a confirmation message
+
+As an air traffic controller
+To ensure saftey
+I want to prevent takeoff if a plane has not been refueled since its last journey with a confirmation message
 ```
 
 ---
@@ -45,7 +49,6 @@ Right click, and open the chrome Developer Tools by selecting `Inspect`. Clcik t
 ```
 let plane = new Plane()
 let airport = new Airport()
-
 ```
 
 This will instantiate the objects needed for the program. You can then type in the following to action the objects accordingly:
