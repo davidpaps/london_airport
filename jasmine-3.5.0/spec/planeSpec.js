@@ -6,13 +6,20 @@ describe("Plane", function () {
 
   beforeEach(function () {
     plane = new Plane();
-    airport = jasmine.createSpyObj("airport", ["land"]);
+    airport = jasmine.createSpyObj("airport", ["land", "takeOff"]);
   });
 
   describe("land", function () {
     it("can land at an airport", function () {
       airport.land(plane);
       expect(airport.land).toHaveBeenCalledWith(plane);
+    });
+  });
+
+  describe("fuel", function () {
+    it("can be refueled", function () {
+      plane.refuel();
+      expect(plane.fuel).toEqual(true);
     });
   });
 });

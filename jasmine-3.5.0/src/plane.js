@@ -1,3 +1,9 @@
 class Plane {
-  constructor() {}
+  constructor() {
+    this.fuel = false;
+  }
+
+  refuel = () => {
+    this.fuel = true;
+  };
 }
