@@ -7,7 +7,7 @@ class Airport {
     this.weather = new Weather();
   }
 
-  land = () => {
+  land = (plane) => {
     if (this.isStormy()) {
       throw new Error("Stormy Weather, Can Not Land!");
     } else {
