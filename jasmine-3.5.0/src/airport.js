@@ -27,7 +27,7 @@ class Airport {
     }
 
     if (!this.hanger.slice(-1)[0].fuel) {
-      return "Please Refuel Before Take Off!";
+      throw new Error("Please Refuel Before Take Off!");
     }
 
     if (!this._isStormy()) {

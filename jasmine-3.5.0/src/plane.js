@@ -10,4 +10,8 @@ class Plane {
   _defuel = () => {
     this.fuel = false;
   };
+
+  _fuel = () => {
+    return this.fuel;
+  };
 }
