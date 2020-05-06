@@ -13,16 +13,17 @@ class Airport {
     } else {
       if (this._spaceAvaliable()) {
         this._dockInHanger(plane);
-        this._fuelSpent(plane);
+        this._deFuel(plane);
+        return "Plane Successfully Landed!";
       } else {
-        return "Hanger Full, Plane Can Not Land!";
+        throw new Error("Hanger Full, Plane Can Not Land!");
       }
     }
   };
 
   takeOff = () => {
     if (!this._planeAvaliable()) {
-      return "No Plane Avaliable!";
+      throw new Error("No Plane Avaliable!");
     }
 
     if (!this.hanger.slice(-1)[0].fuel) {
@@ -41,7 +42,7 @@ class Airport {
     return this.weather.generateWeather();
   };
 
-  _fuelSpent = (plane) => {
+  _deFuel = (plane) => {
     return plane.defuel;
   };
 

@@ -36,7 +36,9 @@ describe("Airport", function () {
 
     it("needs a plane in the hanger to take off", function () {
       spyOn(airport, "_isStormy").and.returnValue(false);
-      expect(airport.takeOff()).toEqual("No Plane Avaliable!");
+      expect(function () {
+        airport.takeOff();
+      }).toThrowError("No Plane Avaliable!");
     });
   });
 
@@ -50,9 +52,9 @@ describe("Airport", function () {
       for (let land = 0; land < 20; land++) {
         airport.land(plane);
       }
-      expect(airport.land(planeTwo)).toEqual(
-        "Hanger Full, Plane Can Not Land!"
-      );
+      expect(function () {
+        airport.land(planeTwo);
+      }).toThrowError("Hanger Full, Plane Can Not Land!");
     });
 
     it("can have a different capacity if specified", function () {
@@ -66,9 +68,9 @@ describe("Airport", function () {
       for (let land = 0; land < 30; land++) {
         largeAirport.land(plane);
       }
-      expect(largeAirport.land(planeTwo)).toEqual(
-        "Hanger Full, Plane Can Not Land!"
-      );
+      expect(function () {
+        largeAirport.land(planeTwo);
+      }).toThrowError("Hanger Full, Plane Can Not Land!");
     });
   });
 
