@@ -6,4 +6,8 @@ class Plane {
   refuel = () => {
     this.fuel = true;
   };
+
+  defuel = () => {
+    this.fuel = false;
+  };
 }
